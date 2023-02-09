@@ -1,0 +1,51 @@
+<div id="tax-comparison-calculator">
+  <h3>Tax Deduction for Domestic Rent</h3>
+  <div class="form-group">
+    <label for="rentAmount">Rent Amount:</label>
+    <input type="text" id="rentAmount" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="rentPercentage">Percentage Deductible:</label>
+    <input type="text" id="rentPercentage" value="10" class="form-control">
+  </div>
+  <hr>
+  <h3>Housing Benefits from Employer</h3>
+  <div class="form-group">
+    <label for="housingAmount">Housing Allowance:</label>
+    <input type="text" id="housingAmount" class="form-control">
+  </div>
+  <button id="compare" class="btn btn-primary">Compare</button>
+  <hr>
+  <h3>Tax Savings: <span id="taxSavings"></span></h3>
+</div>
+
+#mortgage-calculator {
+  padding: 20px;
+}
+
+#mortgage-calculator label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#mortgage-calculator input[type="text"] {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+}
+
+#mortgage-calculator button {
+  margin-top: 20px;
+}
+
+#mortgage-calculator h3 {
+  margin-top: 20px;
+}
+
+document.getElementById("calculate").addEventListener("click", function() {
+  var principal = document.getElementById("principal").value;
+  var interestRate = document.getElementById("interestRate").value / 100 / 12;
+  var loanTerm = document.getElementById("loanTerm").value * 12;
+  var monthlyPayment = principal * interestRate / (1 - Math.pow(1 + interestRate, -loanTerm));
+  document.getElementById("monthlyPayment").innerHTML = monthlyPayment.toFixed(2);
+});
